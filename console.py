@@ -2,6 +2,7 @@
 # comentrios
 
 import cmd
+from model.base_model import BaseModel
 
 class HBNBcommand(cmd.Cmd):
       """ HBNB CLASS """
