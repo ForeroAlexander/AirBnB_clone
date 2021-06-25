@@ -31,7 +31,7 @@ class HBNBcommand(cmd.Cmd):
             '''
             Create a new instance of class BaseModel and saves it
             to the JSON file.
-        '''
+            '''
             if len(args) == 0:
             print("** class name missing **")
             return
@@ -43,6 +43,34 @@ class HBNBcommand(cmd.Cmd):
 
             except:
             print("** class doesn't exist **")
+
+      def do_show(self, args):
+            '''
+            Print the string representation of an instance based on
+            the class name and id given as args.
+            '''
+            args = shlex.split(args)
+            if len(args) == 0:
+                  print("** class name missing **")
+                  return
+            if len(args) == 1:
+                  print("** instance id missing **")
+                  return
+      storage = FileStorage()
+      storage.reload()
+      obj_dict = storage.all()
+      try:
+            eval(args[0])
+      except NameError:
+            print("** class doesn't exist **")
+            return
+      key = args[0] + "." + args[1]
+      key = args[0] + "." + args[1]
+      try:
+            value = obj_dict[key]
+            print(value)
+      except KeyError:
+            print("** no instance found **")
 
 if __name__ == "__main__":
       """Infinte loop"""
