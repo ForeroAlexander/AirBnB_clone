@@ -32,16 +32,16 @@ class HBNBcommand(cmd.Cmd):
             Create a new instance of class BaseModel and saves it
             to the JSON file.
         '''
-        if len(args) == 0:
+            if len(args) == 0:
             print("** class name missing **")
             return
-        try:
+            try:
             args = shlex.split(args)
             new_instance = eval(args[0])()
             new_instance.save()
             print(new_instance.id)
 
-        except:
+            except:
             print("** class doesn't exist **")
 
 if __name__ == "__main__":
