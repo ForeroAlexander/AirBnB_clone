@@ -8,3 +8,8 @@ from models.city import City
 from models.review import Review
 from models.place import Place
 from models.state import State
+
+class FileStorage():
+    __file_path = 'file.json'
+    __objects = {}
+    

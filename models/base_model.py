@@ -6,7 +6,7 @@ import models
 
 
 class BaseModel:
-    def __init__(self *args, **Kwargs):
+    def __init__(self, *args, **Kwargs):
         """Args:
         id: id of instance
         create_at: time of creation
@@ -18,7 +18,7 @@ class BaseModel:
             models.storage.new(self)
         else:
             for attr_name, attr in kwargs.items():
-                if attr_name == "created_at" ot attr_name == "update_at":
+                if attr_name == "created_at" or attr_name == "update_at":
                     attr = datetime.strptime(attr, "%Y-%m-%dT%H:%M:%S.%f")
                 if attr_name != "__class__":
                     setattr(self, attr_name, attr)
