@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """coments"""
 
-from models.base.models import BaseModel
-class User(baseModel):
+from models.base_model import BaseModel
+class User(BaseModel):
 
     email = ""
     password = ""
