@@ -12,38 +12,46 @@ class BaseModel:
         create_at: time of creation
         update_at: time of creation or modification
         """
-        if not Kwargs:
-            self.id = str(uuid.uuid4())
-            self.created_at = self.update_at = datetime.now()
-            models.storage.new(self)
+        if Kwargs:
+            # self.__dict__ = kwargs
+            # self.created_at = datetime.strptime(self.created_at,
+            #                                     "%Y-%m-%dT%H:%M:%S.%f")
+
+            # self.updated_at = datetime.strptime(self.updated_at,
+            #                                     "%Y-%m-%dT%H:%M:%S.%f")
+            for key, value in Kwargs.items():
+                if key == "created_at":
+                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+                if key == "updated_at":
+                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+                if key != "__class__":
+                    setattr(self, key, value)
         else:
-            for attr_name, attr in Kwargs.items():
-                if attr_name == "created_at" or attr_name == "update_at":
-                    attr = datetime.strptime(attr, "%Y-%m-%dT%H:%M:%S.%f")
-                if attr_name != "__class__":
-                    setattr(self, attr_name, attr)
+            self.id = str(uuid.uuid4())  # unique id
+            self.created_at = datetime.now()  # datetime when is created
+            self.updated_at = datetime.now()  # date when is updated
+            models.storage.new(self)
+
 
 
     def __str__(self):
-        """"return str representation"""
-        return "[{}] ({}) {}".format(str(type(self).__name__), self.id,
-                                     str(self.__dict__))
-
-    def __repr__(self):
-        """return object representation"""
-        return "[{}] ({}) {}".format(str(type(self).__name__), self.id,
-                                            str(self.__dict__))
+        """ print() __str__ method """
+        """" For pep8 validation"""
+        className = self.__class__.__name__
+        return "[{}] ({}) {}".format(className, self.id, self.__dict__)
 
     def save(self):
-        """updates the update_at attr w/ current datetime"""
-        self.update_at = datetime.now()
+        """ updates with the current datetime """
+        self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """returns a dictionary representation of __dict__
         w/ __class__ added"""
-        d = dict(**self.__dict__)
-        d['__class__'] = str(type(self).__name__)
-        d['created_at'] = self.created_at.isoformat()
-        d['updated_at'] = self.updated_at.isoformat()
-        return d
+        '''returns a dictionary with all keys/value of the instance'''
+        dict_copy = self.__dict__.copy()
+        dict_copy["created_at"] = self.created_at.isoformat()
+        dict_copy["updated_at"] = self.updated_at.isoformat()
+        dict_copy['__class__'] = self.__class__.__name__
+        return dict_copy
+
