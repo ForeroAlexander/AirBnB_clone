@@ -14,6 +14,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+from models.engine.file_storage import FileStorage
 
 
 
@@ -33,20 +34,20 @@ class HBNBcommand(cmd.Cmd):
             to the JSON file.
             '''
             if len(args) == 0:
-            print("** class name missing **")
-            return
+                  print("** class name missing **")
+                  return
             try:
-            args = shlex.split(args)
-            new_instance = eval(args[0])()
-            new_instance.save()
-            print(new_instance.id)
+                  args = shlex.split(args)
+                  new_instance = eval(args[0])()
+                  new_instance.save()
+                  print(new_instance.id)
 
             except:
-            print("** class doesn't exist **")
+                  print("** class doesn't exist **")
 
       def do_show(self, args):
             '''
-            Print the string representation of an instance based on
+            Print the string representation of an instance baed on
             the class name and id given as args.
             '''
             args = shlex.split(args)
@@ -56,21 +57,21 @@ class HBNBcommand(cmd.Cmd):
             if len(args) == 1:
                   print("** instance id missing **")
                   return
-      storage = FileStorage()
-      storage.reload()
-      obj_dict = storage.all()
-      try:
-            eval(args[0])
-      except NameError:
-            print("** class doesn't exist **")
-            return
-      key = args[0] + "." + args[1]
-      key = args[0] + "." + args[1]
-      try:
-            value = obj_dict[key]
-            print(value)
-      except KeyError:
-            print("** no instance found **")
+            storage = FileStorage()
+            storage.reload()
+            obj_dict = storage.all()
+            try:
+                  eval(args[0])
+            except NameError:
+                  print("** class doesn't exist **")
+                  return
+            key = args[0] + "." + args[1]
+            key = args[0] + "." + args[1]
+            try:
+                  value = obj_dict[key]
+                  print(value)
+            except KeyError:
+                  print("** no instance found **")
 
 if __name__ == "__main__":
       """Infinte loop"""
