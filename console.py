@@ -5,17 +5,9 @@ Module Console
 import cmd
 import shlex
 import sys
-import models
 import json
 from models.base_model import BaseModel
-from models.amenity import Amenity
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
-from models.user import User
-from models.engine.file_storage import FileStorage
-
+from models import storage
 
 
 class HBNBcommand(cmd.Cmd):
@@ -28,6 +20,11 @@ class HBNBcommand(cmd.Cmd):
       def do_quit(self, args):
             """ Close cmd """
             return True
+      def emptyline(self):
+        """Doesn't do anything on ENTER.
+        """
+        pass
+
       def do_create(self, args):
             '''
             Create a new instance of class BaseModel and saves it
@@ -72,6 +69,21 @@ class HBNBcommand(cmd.Cmd):
                   print(value)
             except KeyError:
                   print("** no instance found **")
+
+      def do_all(self, line):
+      """Prints all string representation of all instances.
+      """
+      if line != "":
+            words = line.split(' ')
+            if words[0] not in storage.classes():
+                  print("** class doesn't exist **")
+            else:
+                  l = [str(obj) for key, obj in storage.all().items()
+                       if type(obj).__name__ == words[0]]
+                  print(l)
+      else:
+            l = [str(obj) for key, obj in storage.all().items()]
+            print(l)
 
 if __name__ == "__main__":
       """Infinte loop"""
