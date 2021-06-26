@@ -14,4 +14,6 @@ from models.review import Review
 from models.place import Place
 from models.state import State
 
-
+def all(self):
+        """ Give us  the dictionary __objects """
+        return self.__objects
