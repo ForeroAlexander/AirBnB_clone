@@ -3,5 +3,5 @@
 
 from models.base_model import BaseModel
 
-class user (BaseModel):
+class Amenity(BaseModel):
     name = ""

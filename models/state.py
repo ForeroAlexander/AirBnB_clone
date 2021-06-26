@@ -2,5 +2,5 @@
 """"comments"""
 
 from models.base_model import BaseModel
-class user (BaseModel):
+class State(BaseModel):
     name = ""
