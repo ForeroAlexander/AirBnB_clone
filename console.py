@@ -3,6 +3,7 @@
 Module Console
 """
 import cmd
+from models.engine.file_storage import FileStorage
 import shlex
 import sys
 import json
@@ -13,7 +14,6 @@ from models import storage
 class HBNBcommand(cmd.Cmd):
       """ HBNB CLASS """
       prompt = '(hbnb)'
-
       def do_EOF(self, args):
             """ End Of Line"""
             print()
@@ -52,7 +52,7 @@ class HBNBcommand(cmd.Cmd):
             if len(args) == 0:
                   print("** class name missing **")
                   return
-            if len(args) == 1:
+            if len(args) >= 2:
                   print("** instance id missing **")
                   return
             storage = FileStorage()
@@ -71,11 +71,11 @@ class HBNBcommand(cmd.Cmd):
             except KeyError:
                   print("** no instance found **")
 
-      def do_all(self, args):
+      def do_all(self, line):
             """Prints all string representation of all instances.
             """
-            if args != "":
-                  words = args.split(' ')
+            if line != "":
+                  words = line.split(' ')
                   if words[0] not in storage.classes():
                         print("** class doesn't exist **")
                   else:

@@ -12,8 +12,16 @@ class BaseModel:
         create_at: time of creation
         update_at: time of creation or modification
         """
-        if Kwargs:
+        if not Kwargs:
+
+            self.id = str(uuid.uuid4())  # unique id
+            self.created_at = datetime.now()  # datetime when is created
+            self.updated_at = datetime.now()  # date when is updated
+            models.storage.new(self)
+
             
+            
+        else:
             for key, value in Kwargs.items():
                 if key == "created_at":
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
@@ -21,11 +29,6 @@ class BaseModel:
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 if key != "__class__":
                     setattr(self, key, value)
-        else:
-            self.id = str(uuid.uuid4())  # unique id
-            self.created_at = datetime.now()  # datetime when is created
-            self.updated_at = datetime.now()  # date when is updated
-            models.storage.new(self)
 
 
 
