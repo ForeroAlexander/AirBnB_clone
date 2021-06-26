@@ -1,5 +1,5 @@
 
-<p align="center"> <img src = "https://www.tabbykatz.com/hbnb.png" /></p>
+<p align="center"> <img src = "https://www.tabbykatz.com/hbnb.png">
 
 # Synopsis
 
