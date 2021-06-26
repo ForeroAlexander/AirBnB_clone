@@ -6,7 +6,7 @@ by now...the console.
 
 ## Features
 
-### Command Interpreter
+### Command Interpreter :microscope:
 
 #### Description
 
@@ -32,7 +32,7 @@ or to use the non-interactive mode run:
 Commands | Description | Usage
 -------- | ----------- |-------- |
 **help** or **?**| Displays the documented commands. | **help**
-**quit**     | Exits the program. | **quit**
+**quit**     | Exits the program in the console. | **quit**
 **EOF**      | Ends the program. Used when files are passed into the program. | N/A
 **create**  | Creates a new instance of the \<class_name\>. Creates a Json file with the object representation. and prints the id of created object. | **create** \<class_name\>
 **show**    | Prints the string representation of an instance based on the class name and id. | **show** \<class_name class_id\>
@@ -40,7 +40,7 @@ Commands | Description | Usage
 **all** | Prints all string representation of all instances based or not on the class name | **all** or **all** \<class_name class_id\>
 **update** | Updates an instance based on the class name and id by adding or updating attribute :clock1: | **update** \<class_name class_id key value\>
 
-## Tests
+##  :warning: Tests :warning:
 
 If you wish to run at the test for this application all of the test are located
 under the **test/** folder and can execute all of them by simply running:
