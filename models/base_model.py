@@ -13,12 +13,7 @@ class BaseModel:
         update_at: time of creation or modification
         """
         if Kwargs:
-            # self.__dict__ = kwargs
-            # self.created_at = datetime.strptime(self.created_at,
-            #                                     "%Y-%m-%dT%H:%M:%S.%f")
-
-            # self.updated_at = datetime.strptime(self.updated_at,
-            #                                     "%Y-%m-%dT%H:%M:%S.%f")
+            
             for key, value in Kwargs.items():
                 if key == "created_at":
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
@@ -35,8 +30,8 @@ class BaseModel:
 
 
     def __str__(self):
-        """ print() __str__ method """
-        """" For pep8 validation"""
+        """  this function prints __str__ method """
+        """" pep8 check"""
         className = self.__class__.__name__
         return "[{}] ({}) {}".format(className, self.id, self.__dict__)
 
