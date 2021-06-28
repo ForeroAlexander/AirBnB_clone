@@ -71,10 +71,11 @@ class HBNBcommand(cmd.Cmd):
             except KeyError:
                   print("** no instance found **")
 
-      def do_all(self, line):
+
+      def do_all(self, args):
             """Prints all string representation of all instances.
             """
-            if line != "":
+            if args:
                   words = line.split(' ')
                   if words[0] not in storage.classes():
                         print("** class doesn't exist **")
@@ -129,3 +130,4 @@ class HBNBcommand(cmd.Cmd):
 if __name__ == "__main__":
       """Infinte loop"""
       HBNBcommand().cmdloop()
+ 
