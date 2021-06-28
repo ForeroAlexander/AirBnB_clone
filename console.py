@@ -73,7 +73,24 @@ class HBNBcommand(cmd.Cmd):
                 print(dic[keyl])
             else:
                 print("** no instance found **")
-        return
+
+      def do_destroy(self, argument):
+            """string view of id and class name"""
+            tok = shlex.split(argument)
+            if len(tok) == 0:
+                  print("** class name missing **")
+            elif len(tok) == 1:
+                  print("** instance id missing **")
+            elif tok[0] not in self.classes:
+                  print("** class doesn't exist **")
+            else:
+                  dic = models.storage.all()
+                  keyl = tok[0] + '.' + str(tok[1])
+                  if key in objects:
+                        del objects[key]
+                        storage.save()
+                  else:
+                        print("** no instance found **")
 
 
       def do_all(self, args):
