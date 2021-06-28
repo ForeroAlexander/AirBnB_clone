@@ -3,17 +3,31 @@
 Module Console
 """
 import cmd
+from models import base_model
+import models
 from models.engine.file_storage import FileStorage
 import shlex
 import sys
 import json
 from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
 class HBNBcommand(cmd.Cmd):
       """ HBNB CLASS """
       prompt = '(hbnb)'
+
+      classes = {'BaseModel': BaseModel, 'Amenity': Amenity,
+               'State': State, 'Place': Place, 'Review': Review,
+               'User': User, 'City': City}
+
       def do_EOF(self, args):
             """ End Of Line"""
             print()
@@ -43,33 +57,23 @@ class HBNBcommand(cmd.Cmd):
             except:
                   print("** class doesn't exist **")
 
-      def do_show(self, args):
-            '''
-            Print the string representation of an instance baed on
-            the class name and id given as args.
-            '''
-            args = shlex.split(args)
-            if len(args) == 0:
-                  print("** class name missing **")
-                  return
-            if len(args) == 1:
-                  print("** instance id missing **")
-                  return
-            storage = FileStorage()
-            storage.reload()
-            obj_dict = storage.all()
-            try:
-                  eval(args[0])
-            except NameError:
-                  print("** class doesn't exist **")
-                  return
-            key = args[0] + "." + args[1]
-            key = args[0] + "." + args[1]
-            try:
-                  value = obj_dict[key]
-                  print(value)
-            except KeyError:
-                  print("** no instance found **")
+      def do_show(self, argument):
+        """string view of id and class name"""
+        tok = shlex.split(argument)
+        if len(tok) == 0:
+            print("** class name missing **")
+        elif len(tok) == 1:
+            print("** instance id missing **")
+        elif tok[0] not in self.classes:
+            print("** class doesn't exist **")
+        else:
+            dic = models.storage.all()
+            keyl = tok[0] + '.' + str(tok[1])
+            if keyl in dic:
+                print(dic[keyl])
+            else:
+                print("** no instance found **")
+        return
 
       def do_all(self, line):
             """Prints all string representation of all instances.
