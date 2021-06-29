@@ -19,8 +19,6 @@ class BaseModel:
             self.updated_at = datetime.now()  # date when is updated
             models.storage.new(self)
 
-            
-            
         else:
             for key, value in Kwargs.items():
                 if key == "created_at":
@@ -29,8 +27,6 @@ class BaseModel:
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 if key != "__class__":
                     setattr(self, key, value)
-
-
 
     def __str__(self):
         """  this function prints __str__ method """
@@ -52,4 +48,3 @@ class BaseModel:
         dict_copy["updated_at"] = self.updated_at.isoformat()
         dict_copy['__class__'] = self.__class__.__name__
         return dict_copy
-
