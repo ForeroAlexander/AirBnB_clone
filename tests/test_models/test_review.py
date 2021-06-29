@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Test"""
 
-class TestReview(unittest,TestCase):
-    """test Review"
+
+class TestReview(unittest, TestCase):
+    """test Review"""
