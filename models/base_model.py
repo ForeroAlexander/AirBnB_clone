@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Module BaseModel"""
-
+"""Module BaseMxodel"""
 from datetime import datetime
 import uuid
 import models
@@ -14,7 +13,6 @@ class BaseModel:
         update_at: time of creation or modification
         """
         if not Kwargs:
-
             self.id = str(uuid.uuid4())  # unique id
             self.created_at = datetime.now()  # datetime when is created
             self.updated_at = datetime.now()  # date when is updated
