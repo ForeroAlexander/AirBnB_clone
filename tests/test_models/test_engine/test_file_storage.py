@@ -4,3 +4,4 @@
 
 class TestFileStorage(unittest, TestCase):
     """test save"""
+    pass
