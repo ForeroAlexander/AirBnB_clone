@@ -4,7 +4,6 @@ Module Console
 """
 import cmd
 from os import linesep
-from typing import KeysView
 from models import base_model
 import models
 from models.engine.file_storage import FileStorage
