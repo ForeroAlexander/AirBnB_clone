@@ -4,3 +4,4 @@
 
 class TestCity(unittest, TestCase):
     """test City"""
+    pass

@@ -4,3 +4,4 @@
 
 class TestUser(unittest, TestCase):
     """test User"""
+    pass

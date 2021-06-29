@@ -4,3 +4,4 @@
 
 class TestState(unittest, TestCase):
     """state"""
+    pass

@@ -4,3 +4,4 @@
 
 class TestAmenity(unittest, TestCase):
     """test"""
+    pass
