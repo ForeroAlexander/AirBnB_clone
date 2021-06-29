@@ -6,7 +6,7 @@ import uuid
 import models
 
 
-class BaseModel():
+class BaseModel:
     def __init__(self, *args, **Kwargs):
         """Args:
         id: id of instance
