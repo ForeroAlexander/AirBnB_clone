@@ -3,6 +3,8 @@
 Module Console
 """
 import cmd
+from os import linesep
+from typing import KeysView
 from models import base_model
 import models
 from models.engine.file_storage import FileStorage
@@ -62,10 +64,10 @@ class HBNBcommand(cmd.Cmd):
         tok = shlex.split(argument)
         if len(tok) == 0:
             print("** class name missing **")
-        elif len(tok) == 1:
-            print("** instance id missing **")
         elif tok[0] not in self.classes:
             print("** class doesn't exist **")
+        elif len(tok) == 1:
+            print("** instance id missing **")
         else:
             dic = models.storage.all()
             keyl = tok[0] + '.' + str(tok[1])
@@ -73,22 +75,23 @@ class HBNBcommand(cmd.Cmd):
                 print(dic[keyl])
             else:
                 print("** no instance found **")
+            return
 
       def do_destroy(self, argument):
-            """string view of id and class name"""
-            tok = shlex.split(argument)
-            if len(tok) == 0:
+            """delete string view of id and class name"""
+            tok_del = shlex.split(argument)
+            if len(tok_del) == 0:
                   print("** class name missing **")
-            elif len(tok) == 1:
+            elif len(tok_del) == 1:
                   print("** instance id missing **")
-            elif tok[0] not in self.classes:
+            elif tok_del[0] not in self.classes:
                   print("** class doesn't exist **")
             else:
                   dic = models.storage.all()
-                  keyl = tok[0] + '.' + str(tok[1])
-                  if key in objects:
-                        del objects[key]
-                        storage.save()
+                  k = tok_del[0] + '.' + (tok_del[1])
+                  if (k in dic):
+                        del dic[k]
+                        models.storage.save()
                   else:
                         print("** no instance found **")
 
@@ -97,7 +100,7 @@ class HBNBcommand(cmd.Cmd):
             """Prints all string representation of all instances.
             """
             if args:
-                  words = line.split(' ')
+                  words = linesep.split(' ')
                   if words[0] not in storage.classes():
                         print("** class doesn't exist **")
                   else:
