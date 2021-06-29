@@ -82,10 +82,10 @@ class HBNBcommand(cmd.Cmd):
             tok_del = shlex.split(argument)
             if len(tok_del) == 0:
                   print("** class name missing **")
-            elif len(tok_del) == 1:
-                  print("** instance id missing **")
             elif tok_del[0] not in self.classes:
                   print("** class doesn't exist **")
+            elif len(tok_del) == 1:
+                  print("** instance id missing **")
             else:
                   dic = models.storage.all()
                   k = tok_del[0] + '.' + (tok_del[1])
