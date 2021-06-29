@@ -1,5 +1,5 @@
 #!usr/bin/python3
 """tests"""
 
-class TestBaseModel_save(unittest.TestCase):
+class TestFileStorage(unittest.TestCase):
 """test save"""
