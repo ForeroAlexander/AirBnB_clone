@@ -117,7 +117,7 @@ class HBNBcommand(cmd.Cmd):
                 className = key.split('.')
                 if className[0] == token_all[0]:
                     representation_Class = str(dic[key])
-                    listI.append(representation_Class)
+                    list_all.append(representation_Class)
             print(list_all)
 
     def do_update(self, args):
