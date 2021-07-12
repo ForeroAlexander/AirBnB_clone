@@ -1,0 +1,110 @@
+.places{
+    font-size: 30px;
+}
+article{
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: #FF5A5F solid 1px;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 20px, 20px;
+    text-align: justify;   
+}
+.places h2{
+    font-size: 30px;
+    text-align: center;
+    line-height: 2px;
+}
+.center{
+    width: 390px;
+    padding: 20px;
+    margin-right: 20px;
+    position: relative;
+    margin-left: 270px;
+}
+.price_by_night{
+    align-items: center;
+    height: 300px;
+}
+span{
+    color: #FF5A5F;
+    border: #FF5A5F solid 4px;
+    border-radius: 900px;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    right: -325px;
+    top: -40px;
+}
+.tke_1{
+    position: relative;
+    right: 3px;
+    top: 50px;
+}
+.tke_2{
+    position: relative;
+    left: -5px;
+    top: 50px;
+}
+.tke_3{
+    position: relative;
+    left: -7px;
+    top: 50px;
+}
+.information{
+    height: 80px;
+    border-top: #DDDDDD solid 1px;
+    border-bottom: #DDDDDD solid 1px;
+    font-size: 15px;
+}
+.max_guest{
+    background-image: url(../images/icon_group.png);
+    background-repeat: no-repeat;
+    position: relative;
+    right: -60px;
+}
+.number_rooms{
+    background-image: url(../images/icon_bed.png);
+    background-repeat: no-repeat;
+    position: relative;
+    right: -105px;
+    top: -30px;
+
+}
+.number_bathrooms{
+    background-image: url(../images/icon_bath.png);
+    background-repeat: no-repeat;
+    position: relative;
+    right: -110px;
+    top: -30px;
+}
+.parra{
+    position: relative;
+    right: 270px;
+    top: 65px;
+}
+.parra_2{
+    position: relative;
+    right: 270px;
+    top: 52px;
+}
+.statesss{
+    font-size: 20px;
+    position: relative;
+    left: -90px;
+}
+.page{
+    position: relative;
+    left: -50px;
+}
+.arizona{
+    position: relative;
+    left: -100px;
+    font-size: 20px;
+}
